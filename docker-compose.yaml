@@ -1,0 +1,20 @@
+version: "3.1"
+
+services:
+  db:
+    container_name: my_mysql_container
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: moviesdb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "5004:3306"
+    volumes:
+      - ./db_data:/var/lib/mysql
+      - ./scripts:/docker-entrypoint-initdb.d
+
+volumes:
+  db_data:
