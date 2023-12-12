@@ -7,7 +7,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: mydb
+      MYSQL_DATABASE: moviesdb
       MYSQL_USER: user
       MYSQL_PASSWORD: password
     ports:
