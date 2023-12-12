@@ -1,6 +1,6 @@
 # Running MySQL using Docker
 
-Our primary objective is to deploy and operate a MySQL database using Docker, enabling us to utilize MySQL functionalities without the need for installing it directly on our local machine.
+Our primary objective is to operate a MySQL database using Docker for enabling us to utilize MySQL functionalities without the need for installing it directly on our local machine.
 
 ## Pre-requisites for running MySQL on Docker
 
@@ -20,6 +20,10 @@ Use the following command to bring up the MySQL container using Docker Compose:
 ```bash
 docker compose up
 ```
+
+Once the command is entered, you will see the following output:
+
+![image_00](https://github.com/di37/mysql-docker-tutorial/blob/main/screenshots/screenshot_00.png?raw=true)
 
 ### Data Persistence Configuration
 
@@ -51,6 +55,10 @@ Command:
 docker exec -it my_mysql_container /bin/bash mysql -p
 ```
 
+Terminal output:
+
+<img src="https://github.com/di37/mysql-docker-tutorial/blob/main/screenshots/screenshot_01.png?raw=true" width="1000" height="250">
+
 Replace `my_mysql_container` with your actual container name if different.
 
 - **Password:** When prompted, enter the `MYSQL_ROOT_PASSWORD` (in this case, `root`).
@@ -69,6 +77,9 @@ pip install mycli
 mycli -u user -h 127.0.0.1 -P 5004 -p password moviesdb
 ```
 
+Terminal output:
+
+<img src="https://github.com/di37/mysql-docker-tutorial/blob/main/screenshots/screenshot_02.png?raw=true" width="1000" height="250">
 Here, replace:
 
 - `user` with your MySQL username.
@@ -92,7 +103,7 @@ db:
     - "5004:3306"
 ```
 
-Now, we are ready to run SQL commands.
+Now, we are ready to run SQL query.
 
 ## Example scripts
 
@@ -104,11 +115,19 @@ The purpose of this tutorial is for the users to get started with using MySQL on
 SHOW DATABASES;
 ```
 
+Terminal output:
+
+<img src="https://github.com/di37/mysql-docker-tutorial/blob/main/screenshots/screenshot_03.png?raw=true" width="950" height="170">
+
 2. Use a specific database from the list of databases in the server
 
 ```base
 USE moviesdb;
 ```
+
+Terminal output:
+
+<img src="https://github.com/di37/mysql-docker-tutorial/blob/main/screenshots/screenshot_04.png?raw=true" width="1000" height="170">
 
 3. Show the tables from the selected database.
 
@@ -116,17 +135,27 @@ USE moviesdb;
 SHOW TABLES;
 ```
 
+Terminal output:
+
+<img src="https://github.com/di37/mysql-docker-tutorial/blob/main/screenshots/screenshot_05.png?raw=true" width="1000" height="170">
+
 4. Fetch all the data from the `movies` table.
 
 ```base
 SELECT * FROM movies;
 ```
 
+Terminal output:
+
+<img src="https://github.com/di37/mysql-docker-tutorial/blob/main/screenshots/screenshot_06.png?raw=true" width="1000" height="300">
+
+
 5. Lets try a little complex SQL query:
 
 ```base
 SELECT * FROM movies WHERE industry="hollywood";
 ```
+<img src="https://github.com/di37/mysql-docker-tutorial/blob/main/screenshots/screenshot_07.png?raw=true" width="1200" height="225">
 
 We can see all these commands are working properly which indicates our sample sql script executed successfully.
 
