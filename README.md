@@ -26,13 +26,19 @@ docker compose up
 To ensure data persists across container restarts, configure volumes in your Docker Compose file:
 
 ```bash
+services:
+  db:
+  ...
+    volumes:
+    - ./db_data:/var/lib/mysql
+    - ./scripts:/docker-entrypoint-initdb.d
+
 volumes:
-  - ./db_data:/var/lib/mysql
-  - ./scripts:/docker-entrypoint-initdb.d
+  db_data:
 ```
 
-- The `./db_data` directory on your host is mapped to `/var/lib/mysql` inside the container, preserving the database data.
-- The `./scripts` directory contains the initialization SQL script `codebasics-movies-db.sql`. This directory is mounted to `/docker-entrypoint-initdb.d` in the container. MySQL automatically executes scripts in this directory upon container initialization. Scripts are executed in ascending / alphabetical order.
+- The `db_data` directory on your host is mapped to `var/lib/mysql` inside the container, preserving the database data.
+- The `scripts` directory contains the initialization SQL script `codebasics-movies-db.sql`. This directory is mounted to `docker-entrypoint-initdb.d` in the container. MySQL automatically executes scripts in this directory upon container initialization. Scripts are executed in ascending / alphabetical order.
 
 ### Accessing the MySQL Database
 
